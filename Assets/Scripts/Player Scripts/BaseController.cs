@@ -41,7 +41,7 @@ public class BaseController : MonoBehaviour
 
     protected void MoveStraight()
     {
-        speed = new Vector3(0f, 0f, speed.z);
+        speed = new Vector3(0f, 0f, z_speed);
     }
 
     protected void MoveNormal()

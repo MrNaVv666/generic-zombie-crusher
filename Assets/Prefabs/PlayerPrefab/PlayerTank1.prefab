@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1872614599658348297}
   m_Layer: 0
   m_Name: PlayerTank1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bdd8af1f8db1ab4b9dbb2a0cd87963c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 0}
+  x_speed: 8
+  z_speed: 15
+  accelerated: 15
+  deccelerated: 10
+  low_sound_pitch: 0
+  normal_sound_pitch: 0
+  high_sound_pitch: 0
+  engine_on_sound: {fileID: 0}
+  engine_off_sound: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1001 &862860976876995310
 PrefabInstance:
   m_ObjectHideFlags: 0
