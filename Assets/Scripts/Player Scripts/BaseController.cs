@@ -9,7 +9,7 @@ public class BaseController : MonoBehaviour
 
     public float x_speed = 8f;
     public float z_speed = 15f;
-    public float accelerated = 15f, slowed = 10f;
+    public float accelerated = -15f, slowed = 5f;
     public float low_Sound_Pitch, normal_Sound_Pitch, high_Sound_Pitch;
 
     protected float rotationSpeed = 10f;
@@ -18,11 +18,11 @@ public class BaseController : MonoBehaviour
     private bool is_Slow;
     private AudioSource soundManager;
 
-    private void Awake()
+    protected void Awake()
     {
-        speed = new Vector3(0f, 0f, z_speed);
         is_Slow = false;
         soundManager = GetComponent<AudioSource>();
+        print(speed);
     }
 
     void Update()
@@ -31,17 +31,17 @@ public class BaseController : MonoBehaviour
     }
     protected void MoveLeft()
     {
-        speed = new Vector3(-x_speed / 2f, 0f, speed.z);
+        speed = new Vector3(x_speed / 2f, 0f, speed.z);
     }
 
     protected void MoveRight()
     {
-        speed = new Vector3(x_speed / 2f, 0f, speed.z);
+        speed = new Vector3(-x_speed / 2f, 0f, speed.z);
     }
 
     protected void MoveForward()
     {
-        speed = new Vector3(x_speed / 2f, 0f, speed.z);
+        speed = new Vector3(0f, 0f, speed.z);
     }
 
     protected void ChangeMoveNormal()
@@ -55,7 +55,7 @@ public class BaseController : MonoBehaviour
             soundManager.volume = 0.3f;
             soundManager.Play();
         }
-        speed = new Vector3(speed.x, 0f, z_speed);
+        speed = new Vector3(speed.x, 0f, -z_speed);
     }
 
     protected void ChangeMoveSlow()
@@ -69,7 +69,7 @@ public class BaseController : MonoBehaviour
             soundManager.volume = 0.5f;
             soundManager.Play();
         }
-        speed = new Vector3(speed.x, 0f, slowed);
+        speed = new Vector3(speed.x, 0f, -slowed);
     }
 
     protected void ChangeMoveFast()
