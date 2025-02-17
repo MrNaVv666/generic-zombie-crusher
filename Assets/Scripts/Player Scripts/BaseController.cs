@@ -12,10 +12,11 @@ public class BaseController : MonoBehaviour
     public float accelerated = -15f, slowed = 5f;
     public float low_Sound_Pitch, normal_Sound_Pitch, high_Sound_Pitch;
 
+    public bool is_Slow;
+
     protected float rotationSpeed = 10f;
     protected float maxAngle = 10f;
 
-    private bool is_Slow;
     private AudioSource soundManager;
 
     protected void Awake()
@@ -50,12 +51,13 @@ public class BaseController : MonoBehaviour
         {
             is_Slow = false;
 
-            soundManager.Stop();
-            soundManager.clip = engine_On_Sound;
-            soundManager.volume = 0.3f;
-            soundManager.Play();
+            //soundManager.Stop();
+            //soundManager.clip = engine_On_Sound;
+            //soundManager.volume = 0.3f;
+            //soundManager.Play();
         }
         speed = new Vector3(speed.x, 0f, -z_speed);
+        Debug.Log("elo");
     }
 
     protected void ChangeMoveSlow()
@@ -64,10 +66,10 @@ public class BaseController : MonoBehaviour
         {
             is_Slow = true;
 
-            soundManager.Stop();
-            soundManager.clip = engine_Off_Sound;
-            soundManager.volume = 0.5f;
-            soundManager.Play();
+            //soundManager.Stop();
+            //soundManager.clip = engine_Off_Sound;
+            //soundManager.volume = 0.5f;
+            //soundManager.Play();
         }
         speed = new Vector3(speed.x, 0f, -slowed);
     }
