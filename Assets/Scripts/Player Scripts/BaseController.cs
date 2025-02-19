@@ -76,6 +76,6 @@ public class BaseController : MonoBehaviour
 
     protected void ChangeMoveFast()
     {
-        speed = new Vector3(speed.x, 0f, accelerated);
+        speed = new Vector3(speed.x, 0f, -accelerated);
     }
 }

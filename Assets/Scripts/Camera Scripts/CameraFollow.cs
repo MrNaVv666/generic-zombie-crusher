@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;
 
-    public float distance = 6.3f;
+    public float distance = 5.3f;
     public float height = 3.5f;
     public float height_Damping = 3.25f;
     public float rotation_Damping = 0.27f;
