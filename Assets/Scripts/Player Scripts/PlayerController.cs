@@ -19,6 +19,7 @@ public class PlayerController : BaseController
     {
         ControlMovement();
         ChangeRotation();
+        ShootingControl();
     }
 
     void FixedUpdate()
@@ -75,6 +76,16 @@ public class PlayerController : BaseController
         }else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public void ShootingControl()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
+            bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
+            shootFX.Play();
         }
     }
 

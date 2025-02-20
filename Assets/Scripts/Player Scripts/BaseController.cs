@@ -9,7 +9,7 @@ public class BaseController : MonoBehaviour
 
     public float x_speed = 8f;
     public float z_speed = 15f;
-    public float accelerated = -15f, slowed = 5f;
+    public float accelerated = 20f, slowed = 5f;
     public float low_Sound_Pitch, normal_Sound_Pitch, high_Sound_Pitch;
 
     public bool is_Slow;

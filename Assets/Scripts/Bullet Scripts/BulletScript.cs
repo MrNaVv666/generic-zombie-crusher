@@ -6,8 +6,6 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody rb;
-
-    public float speed = -22.4f;
     void Start()
     {
 
@@ -15,10 +13,10 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
-        MoveBullet();
+
     }
 
-    void MoveBullet()
+    public void MoveBullet(float speed)
     {
         rb.AddForce(transform.forward.normalized * speed);
         Invoke("DeactivateBullet", 5f);
