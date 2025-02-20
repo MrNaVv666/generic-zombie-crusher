@@ -182,7 +182,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1818486636018010, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1289228894}
   m_SourcePrefab: {fileID: 100100000, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -419,13 +422,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.97629607, z: 0.2164396, w: 0}
-  m_LocalPosition: {x: 157, y: 4.07, z: -61.7}
+  m_LocalRotation: {x: 0, y: -0.9816273, z: 0.19080894, w: 0}
+  m_LocalPosition: {x: 157, y: 4.04, z: -61.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 25, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 22, y: -180, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  distance: 6.3
+  distance: 5.3
   height: 3.5
   height_Damping: 3.25
   rotation_Damping: 0.27
@@ -498,8 +501,59 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1818486636018010, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1683821119}
   m_SourcePrefab: {fileID: 100100000, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+--- !u!1 &1289228892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1818486636018010, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+  m_PrefabInstance: {fileID: 307535237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1289228893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4236085627205302, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+  m_PrefabInstance: {fileID: 307535237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1289228894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289228892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02f5cfea26933b43b6de138faf663fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherBlock: {fileID: 1683821120}
+  halfLength: 100
+--- !u!1 &1683821118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1818486636018010, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+  m_PrefabInstance: {fileID: 1169063049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683821119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683821118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02f5cfea26933b43b6de138faf663fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherBlock: {fileID: 1289228893}
+  halfLength: 100
+--- !u!4 &1683821120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4236085627205302, guid: 8db8836d630563941b7c4cc07f02970b, type: 3}
+  m_PrefabInstance: {fileID: 1169063049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6712004180897750050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,6 +562,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2048477061465826990, guid: 12c85190753d9c34db87cbd6a2ad2cfa, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048477061465826990, guid: 12c85190753d9c34db87cbd6a2ad2cfa, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4199178017617551579, guid: 12c85190753d9c34db87cbd6a2ad2cfa, type: 3}
       propertyPath: m_Name
       value: Player

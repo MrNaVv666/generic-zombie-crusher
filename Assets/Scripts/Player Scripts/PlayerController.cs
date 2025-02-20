@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    public Transform bullet_StartPoint;
+    public GameObject bullet;
+    public ParticleSystem shootFX;
+
     private Rigidbody rb;
     void Awake()
     {
@@ -73,4 +77,6 @@ public class PlayerController : BaseController
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), rotationSpeed * Time.deltaTime);
         }
     }
+
+
 }
