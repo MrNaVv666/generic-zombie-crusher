@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandbagObstacle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bd635153a99477349a00fc45de465a43, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd635153a99477349a00fc45de465a43, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
