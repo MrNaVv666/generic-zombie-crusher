@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZombieScript : MonoBehaviour
 {
     public GameObject Blood;
-    public float speed = 1f;
+    public float speed = 3f;
 
     private Rigidbody rb;
     private bool isAlive;
