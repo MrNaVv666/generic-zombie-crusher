@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimationEvents : MonoBehaviour
 {
@@ -13,13 +14,13 @@ public class AnimationEvents : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        
-    }
-
     void ResetShooting()
     {
         playerController.canShoot = true;
+    }
+
+    void CameraStartGame()
+    {
+        SceneManager.LoadScene("Gameplay");
     }
 }
