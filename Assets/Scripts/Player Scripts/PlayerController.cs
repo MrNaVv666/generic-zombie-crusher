@@ -12,12 +12,13 @@ public class PlayerController : BaseController
     private Rigidbody rb;
 
     [HideInInspector]
-    private bool canShoot;
+    public bool canShoot;
     void Awake()
     {
         speed = new Vector3(0f, 0f, -z_speed);
         rb = GetComponent<Rigidbody>();
         canShoot = true;
+        shootSlider = GameObject.Find("Cooldown").GetComponent<Animator>();
     }
 
     void Update()
@@ -88,26 +89,14 @@ public class PlayerController : BaseController
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if (canShoot)
+            if (canShoot && Time.timeScale != 0f)
             {
                 GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
                 bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
                 shootFX.Play();
                 canShoot = false;
-            }
-        }
-
-        if (Time.timeScale != 0f)
-        {
-            if(canShoot)
-            {
-                GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
-                bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
-                shootFX.Play();
-                canShoot = false;
+                shootSlider.Play("ShootBarFadeIn");
             }
         }
     }
-
-
 }

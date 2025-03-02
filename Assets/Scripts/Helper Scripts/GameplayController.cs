@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameplayController : MonoBehaviour
 {
@@ -11,8 +14,18 @@ public class GameplayController : MonoBehaviour
     public Transform[] lanes;
     public float min_ObstacleDelay = 10f;
     public float max_ObstacleDelay = 40f;
+
     private float halfGroundSize;
     private BaseController playerController;
+    private TextMeshProUGUI score;
+    private int zombieKC;
+
+    [SerializeField]
+    private GameObject pausePanel;
+    [SerializeField]
+    private GameObject gameoverPanel;
+    [SerializeField]
+    private TextMeshProUGUI finalScore;
 
     void Awake()
     {
@@ -24,6 +37,7 @@ public class GameplayController : MonoBehaviour
         halfGroundSize = GameObject.Find("GroundBlock Main").GetComponent<GroundBlock>().halfLength;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseController>();
         StartCoroutine("GenerateObstacles");
+        score = GameObject.Find("score").GetComponent<TextMeshProUGUI>();
     }
 
     void MakeInstance()
@@ -102,5 +116,42 @@ public class GameplayController : MonoBehaviour
             Vector3 shift = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(1f, 10f) * i);
             Instantiate(zombiePrefabs[Random.Range(0, zombiePrefabs.Length)], pos + shift * i, Quaternion.identity);
         }
+    }
+
+    public void IncreaseScore()
+    {
+        zombieKC++;
+        score.text = zombieKC.ToString();
+    }
+
+    public void PauseGame()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void ExitGame()
+    {
+        Time.timeScale = 1f;
+        //SceneManager.LoadScene("MainMenu");
+    }
+
+    public void GameOver()
+    {
+        gameoverPanel.SetActive(true);
+        Time.timeScale = 0f;
+        finalScore.text = "Killed: " + zombieKC.ToString();
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Gameplay");
     }
 }
