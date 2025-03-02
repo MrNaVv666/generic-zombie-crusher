@@ -8,11 +8,16 @@ public class PlayerController : BaseController
     public GameObject bullet;
     public ParticleSystem shootFX;
 
+    private Animator shootSlider;
     private Rigidbody rb;
+
+    [HideInInspector]
+    private bool canShoot;
     void Awake()
     {
         speed = new Vector3(0f, 0f, -z_speed);
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+        canShoot = true;
     }
 
     void Update()
@@ -83,9 +88,24 @@ public class PlayerController : BaseController
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
-            bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
-            shootFX.Play();
+            if (canShoot)
+            {
+                GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
+                bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
+                shootFX.Play();
+                canShoot = false;
+            }
+        }
+
+        if (Time.timeScale != 0f)
+        {
+            if(canShoot)
+            {
+                GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
+                bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
+                shootFX.Play();
+                canShoot = false;
+            }
         }
     }
 
