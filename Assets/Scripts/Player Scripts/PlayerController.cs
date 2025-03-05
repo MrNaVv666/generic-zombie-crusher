@@ -1,102 +1,150 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : BaseController
-{
-    public Transform bullet_StartPoint;
-    public GameObject bullet;
-    public ParticleSystem shootFX;
+public class PlayerController : BaseController {
 
-    private Animator shootSlider;
-    private Rigidbody rb;
+	private Rigidbody myBody;
 
-    [HideInInspector]
-    public bool canShoot;
-    void Awake()
-    {
-        speed = new Vector3(0f, 0f, -z_speed);
-        rb = GetComponent<Rigidbody>();
-        canShoot = true;
-        shootSlider = GameObject.Find("Cooldown").GetComponent<Animator>();
-    }
+	public Transform bullet_StartPoint;
+	public GameObject bullet_Prefab;
+	public ParticleSystem shootFX;
 
-    void Update()
-    {
-        ControlMovement();
-        ChangeRotation();
-        ShootingControl();
-    }
+	private Animator shootSliderAnim;
 
-    void FixedUpdate()
-    {
-        MoveTank();
-    }
+	[HideInInspector]
+	public bool canShoot;
 
-    void MoveTank()
-    {
-        rb.MovePosition(rb.position + speed * Time.deltaTime);
-    }
+	void Start () {
+		myBody = GetComponent<Rigidbody> ();
 
-    void ControlMovement()
-    {
-        if (Input.GetKey(KeyCode.D))
-        {
-            MoveRight();
-        }
+		shootSliderAnim = GameObject.Find ("Fire Bar").GetComponent<Animator> ();
 
-        else if (Input.GetKey(KeyCode.A))
-        {
-            MoveLeft();
-        }
+		GameObject.Find ("ShootBtn").GetComponent<Button> ().onClick.AddListener (ShootingControl);
+		canShoot = true;
 
-        else if (Input.GetKey(KeyCode.S))
-        {
-            ChangeMoveSlow();
-        }
+	}
 
-        else if (Input.GetKey(KeyCode.W))
-        {
-            ChangeMoveFast();
-        }
+	void Update () {
+		ControlMovementWithKeyboard ();
+		ChangeRotation ();
+		ShootingControl();
+	}
 
-        if (Input.GetKeyUp(KeyCode.A) || (Input.GetKeyUp(KeyCode.D)))
-        {
-            MoveForward();
-        }
+	void FixedUpdate() {
+		MoveTank ();
+	}
 
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            ChangeMoveNormal();
-        }
-    }
+	void MoveTank() {
+		myBody.MovePosition (myBody.position + speed * Time.deltaTime);
+	}
 
-    void ChangeRotation()
-    {
-        if(speed.x > 0f)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, -maxAngle, 0f), rotationSpeed * Time.deltaTime);
-        }else if (speed.x < 0f)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, maxAngle, 0f), rotationSpeed * Time.deltaTime);
-        }else
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), rotationSpeed * Time.deltaTime);
-        }
-    }
+	void ControlMovementWithKeyboard() {
+		
+		if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) {
+			MoveLeft ();
+		}
 
-    public void ShootingControl()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if (canShoot && Time.timeScale != 0f)
-            {
-                GameObject bullett = Instantiate(bullet, bullet_StartPoint.position, Quaternion.identity);
-                bullett.GetComponent<BulletScript>().MoveBullet(-2000f);
-                shootFX.Play();
-                canShoot = false;
-                shootSlider.Play("ShootBarFadeIn");
-            }
-        }
-    }
-}
+		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) {
+			MoveRight ();
+		}
+
+		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W)) {
+			MoveFast ();
+		}
+
+		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S)) {
+			MoveSlow ();
+		}
+
+		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.A)) {
+			MoveStraight ();
+		}
+
+		if (Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.D)) {
+			MoveStraight ();
+		}
+
+		if (Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyUp (KeyCode.W)) {
+			MoveNormal ();
+		}
+
+		if (Input.GetKeyUp (KeyCode.DownArrow) || Input.GetKeyUp (KeyCode.S)) {
+			MoveNormal ();
+		}
+	}
+
+	void ChangeRotation() {
+		if (speed.x > 0) {
+			transform.rotation = Quaternion.Slerp (transform.rotation,
+				Quaternion.Euler (0f, maxAngle, 0f), Time.deltaTime * rotationSpeed);
+			
+		} else if (speed.x < 0) {
+			transform.rotation = Quaternion.Slerp (transform.rotation,
+				Quaternion.Euler (0f, -maxAngle, 0f), Time.deltaTime * rotationSpeed);
+			
+		} else {
+			transform.rotation = Quaternion.Slerp (transform.rotation,
+				Quaternion.Euler (0f, 0f, 0f), Time.deltaTime * rotationSpeed);
+		}
+	}
+
+	public void ShootingControl() {
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (Time.timeScale != 0)
+			{
+				if (canShoot)
+				{
+					GameObject bullet = Instantiate(bullet_Prefab, bullet_StartPoint.position,
+						Quaternion.identity);
+					bullet.GetComponent<BulletScript>().Move(2000f);
+					shootFX.Play();
+
+
+					canShoot = false;
+					shootSliderAnim.Play("Fill");
+				}
+			}
+		}
+	}
+
+} // class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

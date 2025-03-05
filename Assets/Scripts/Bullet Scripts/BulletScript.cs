@@ -1,37 +1,60 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
-{
-    [SerializeField]
-    private Rigidbody rb;
-    void Start()
-    {
+public class BulletScript : MonoBehaviour {
 
-    }
+	[SerializeField]
+	private Rigidbody myBody;
 
-    void Update()
-    {
+	public void Move(float speed) {
+		myBody.AddForce (transform.forward.normalized * speed);
+		Invoke ("DeactivateGameObject", 5f);
+	}
+	
+	void DeactivateGameObject() {
+		gameObject.SetActive (false);
+	}
 
-    }
+	void OnCollisionEnter(Collision target) {
+		if (target.gameObject.tag == "Obstacle") {
+			gameObject.SetActive (false);
+		}
+	}
 
-    public void MoveBullet(float speed)
-    {
-        rb.AddForce(transform.forward.normalized * speed);
-        Invoke("DeactivateBullet", 5f);
-    }
+} // class
 
-    void DeactivateBullet()
-    {
-        gameObject.SetActive(false);
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Obstacle")
-        {
-            gameObject.SetActive(false);
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

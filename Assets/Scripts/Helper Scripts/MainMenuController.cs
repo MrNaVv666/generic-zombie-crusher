@@ -1,13 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuController : MonoBehaviour
-{
-    public Animator animator;
+public class MainMenuController : MonoBehaviour {
 
-    public void MainMenuPlay()
-    {
-        animator.Play("CameraSlide");
-    }
+	public Animator cameraAnim;
+
+	public void PlayGame() {
+		cameraAnim.Play ("Slide");
+	}
+
 }

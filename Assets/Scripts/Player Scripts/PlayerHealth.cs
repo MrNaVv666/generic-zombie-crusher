@@ -1,43 +1,78 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
-{
-    public int health = 100;
+public class PlayerHealth : MonoBehaviour {
 
-    private Slider healthSlider;
-    private GameObject UI_Holder;
+	public int healthValue = 100;
+	private Slider health_Slider;
 
-    void Start()
-    {
-        healthSlider = GameObject.Find("Health").GetComponent<Slider>();
-        healthSlider.value = health;
+	private GameObject UI_Holder;
 
-        UI_Holder = GameObject.Find("UIHolder");
-    }
+	void Start () {
+		health_Slider = GameObject.Find ("Health Bar").GetComponent<Slider> ();
 
-    void Update()
-    {
-        
-    }
+		health_Slider.value = healthValue;
 
-    public void ApplyDamage(int damage)
-    {
-        health -= damage;
+		UI_Holder = GameObject.Find ("UI Holder");
 
-        if(health < 0)
-        {
-            health = 0;
-        }
+	}
+	
+	public void ApplyDamage(int damageAmount) {
 
-        healthSlider.value = health;
+		healthValue -= damageAmount;
 
-        if(health == 0)
-        {
-            UI_Holder.SetActive(false);
-            GameplayController.instance.GameOver();
-        }
-    }
-}
+		if (healthValue < 0) {
+			healthValue = 0;
+		}
+
+		health_Slider.value = healthValue;
+
+		if (healthValue == 0) {
+			UI_Holder.SetActive (false);
+			GameplayController.instance.Gameover ();
+		}
+
+	}
+
+
+} // class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

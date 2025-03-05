@@ -1,31 +1,70 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundBlock : MonoBehaviour
-{
-    public Transform otherBlock;
+public class GroundBlock : MonoBehaviour {
 
-    public float halfLength = 100f;
+	public Transform otherBlock;
+	public float halfLength = 100f;
+	private Transform player;
+	private float endOffset = 10f;
 
-    private Transform player;
+	void Start () {
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		MoveGround ();
+	}
 
-    private float endOffset = 10f;
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+	void MoveGround() {
+		if (transform.position.z + halfLength < player.transform.position.z - endOffset) {
+			
+			transform.position = new Vector3 (otherBlock.position.x, otherBlock.position.y,
+				otherBlock.position.z + halfLength * 2);
+			
+		}
+	}
 
-    void Update()
-    {
-        MoveGround();
-    }
+} // class
 
-    void MoveGround()
-    {
-        if (transform.position.z - halfLength > player.transform.position.z + endOffset)
-        {
-            transform.position = new Vector3(otherBlock.transform.position.x, otherBlock.transform.position.y, otherBlock.transform.position.z - 200f);
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

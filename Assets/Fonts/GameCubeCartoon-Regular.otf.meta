@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 9e7b0252a1fec6e438840df2a5ee7509
+guid: c99aa4e0a3b1040d880337f83c403137
+timeCreated: 1512034023
+licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,14 +10,13 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: GameCube Cartoon
   fontNames:
   - GameCube Cartoon
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  useLegacyBoundsCalculation: 0
-  shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 79677b992d2845849922516249ae9a9a
+guid: ac20b4ec8ae6d4c069311299e77b5a39
+timeCreated: 1512034023
+licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,14 +10,13 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: Kraash Black
   fontNames:
   - Kraash Black
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  useLegacyBoundsCalculation: 0
-  shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
